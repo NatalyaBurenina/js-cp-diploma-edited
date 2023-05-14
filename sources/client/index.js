@@ -1,30 +1,3 @@
-const createRequest = (options = {}) => {
-	const xhr = new XMLHttpRequest();
-	xhr.open(options.method || "POST", "http://f0769682.xsph.ru/", true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xhr.send(options.params);
-	xhr.onreadystatechange = () => {
-		if (xhr.readyState === 4) {
-			if (xhr.status === 200) {
-				try {
-					const response = JSON.parse(xhr.responseText);
-					for (let key in response) {
-						if (response[key].err) {
-							alert(`Ошибка обращения к базе данных ${response[key].err}: ${response[key].errMessage}`);
-							return;
-						}
-					}
-					options.callback(response);
-				} catch (err) {
-					alert(`Ошибка ответа: ${err.message}`);
-				}
-			} else {
-				alert(`Ошибка запроса: ${xhr.status} ${xhr.statusText}`);
-			}
-		}
-	};
-};
-
 const dayWeekList = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -47,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	createRequest({
+		url: "https://jscp-diplom.netoserver.ru/",
 		params: "event=update",
 		callback: (resp) => {
 			const data = {};
