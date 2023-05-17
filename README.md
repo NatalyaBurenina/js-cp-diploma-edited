@@ -1,7 +1,7 @@
 # Дипломное задание по курсу «JavaScript-программирование для начинающих»
 
-Стек используемых технологий:  javascript, html, git.
-Ссылка на ваш проект опубликованный на githubPage: (https://natalyaburenina.github.io/js-cp-diploma-edited/).
+- Стек используемых технологий:  javascript, html, git.
+- Ссылка на GitHub Pages website: (https://natalyaburenina.github.io/js-cp-diploma-edited/).
 
 ## Создание «информационной системы для предварительного бронирования билетов».
 
