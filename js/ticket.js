@@ -27,12 +27,12 @@ function generateTicket() {
 	if (mm < 10) {
 		mm = "0" + mm;
 	}
-	const dateStr = `${dd}-${mm}-${date.getFullYear()}`;
-	let textQR = `Фильм: ${selectSeanse.filmName} Зал: ${
-    selectSeanse.hallName
-  } Ряд/Место ${places} Дата: ${dateStr} Начало сеанса: ${
-    selectSeanse.seanceTime
-  } Билет действителен строго на свой сеанс`;
+	const dateStr = date.toLocaleDateString("ru-RU", {
+		day: "2-digit",
+		month: "2-digit",
+		year: "numeric"
+	});
+	let textQR = `Фильм: ${selectSeanse.filmName} Зал: ${selectSeanse.hallName} Ряд/Место ${places} Дата: ${dateStr} Начало сеанса: ${selectSeanse.seanceTime} Билет действителен строго на свой сеанс`;
 	const qrcode = QRCreator(textQR, {
 		image: "SVG"
 	});

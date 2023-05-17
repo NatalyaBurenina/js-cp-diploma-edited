@@ -3,6 +3,8 @@ const createRequest = (options = {}) => {
 	xhr.open(options.method || "POST", options.url, true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.send(options.params);
+	console.log("ПОШЕЛ ЗАПРОС К СЕРВЕРУ!");
+	
 	xhr.onreadystatechange = () => {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {

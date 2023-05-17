@@ -14,18 +14,20 @@ for (const {
 	price += type === "standart" ? Number(selectSeanse.priceStandart) : Number(selectSeanse.priceVip);
 }
 
-document.querySelector(".ticket__title").innerHTML = selectSeanse.filmName; // movie title
-document.querySelector(".ticket__chairs").innerHTML = places; // chairs
-document.querySelector(".ticket__hall").innerHTML = selectSeanse.hallName; // hall name
-document.querySelector(".ticket__start").innerHTML = selectSeanse.seanceTime; // session start
-document.querySelector(".ticket__cost").innerHTML = price; // price
+document.querySelector(".ticket__title").innerHTML = selectSeanse.filmName;  
+document.querySelector(".ticket__chairs").innerHTML = places; 
+document.querySelector(".ticket__hall").innerHTML = selectSeanse.hallName;  
+document.querySelector(".ticket__start").innerHTML = selectSeanse.seanceTime;  
+document.querySelector(".ticket__cost").innerHTML = price;  
 
 const newHallConfig = selectSeanse.hallConfig.replace(/selected/g, "taken");
-
 document.querySelector(".acceptin-button").addEventListener("click", (event) => {
 	event.preventDefault();
 	fetch("https://jscp-diplom.netoserver.ru/", {
 		method: "POST",
+		headers: {
+			'Content-Type' : 'application/x-www-form-urlencoded'
+		},
 		body: `event=sale_add&timestamp=${selectSeanse.seanceTimeStamp}&hallId=${selectSeanse.hallId}&seanceId=${selectSeanse.seanceId}&hallConfiguration=${newHallConfig}`,
 	});
 });
